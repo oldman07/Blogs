@@ -1,5 +1,5 @@
 
-@extends('layouts.auth.main')
+@extends('layouts.auth')
 @section('main-section')
 
   <nav class="bg-white border-b border-gray-200">
