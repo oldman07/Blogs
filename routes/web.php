@@ -17,4 +17,4 @@ Route::get('/', function () {
 });
 Route::get('/login',[AuthController::class, 'showLoginForm'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->name('dashboard');
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
