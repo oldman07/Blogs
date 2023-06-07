@@ -8,7 +8,7 @@
           Create an account
         </h2>
       </div>
-      <form class="mt-8 space-y-6" method="POST" action="/register">
+      <form class="mt-8 space-y-6" method="POST" action="{{ route('register') }}">
         @csrf
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">
