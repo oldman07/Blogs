@@ -16,7 +16,7 @@ use App\Http\Controllers\RegistrationController;
 */
 
 Route::get('/', function () {
-    return view('welcome')->name('home');
+    return view('welcome')->name('welcome ');
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
