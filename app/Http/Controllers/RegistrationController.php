@@ -25,6 +25,6 @@ class RegistrationController extends Controller
         // Optionally, you can log in the user immediately after registration.
         // Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 }
