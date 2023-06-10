@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'authenticate']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistrationController::class, 'register'])->name('register');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::resource('blogs', 'App\Http\Controllers\BlogController');
