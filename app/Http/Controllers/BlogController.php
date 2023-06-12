@@ -73,16 +73,45 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        return view('blogs.edit', compact('blog'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validation rules
+        $rules = [
+            'title' => 'required',
+            'author' => 'required',
+            'text' => 'required',
+        ];
+
+        // Create a validator instance
+        $validator = Validator::make($request->all(), $rules);
+
+        // Check if the validation fails
+        if ($validator->fails()) {
+            return redirect()->route('blogs.edit', $id)
+                ->withErrors($validator)
+                ->withInput($request->only($rules));
+        }
+
+        // Update the blog post
+        $blog = Blog::findOrFail($id);
+        $blog->title = $request->get('title');
+        $blog->author = $request->get('author');
+        $blog->text = $request->get('text');
+        $blog->save();
+
+        // Redirect to the blog list or a specific page, e.g., the first blog
+        return redirect()->route('blogs.index')->with('success', 'Blog updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
