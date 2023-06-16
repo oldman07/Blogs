@@ -11,7 +11,7 @@
                 <div class="bg-white rounded shadow p-4 mb-4">
                     <h2 class="text-xl font-bold mb-2">{{ $blog->title }}</h2>
                     <p class="text-gray-700 text-base mb-2">{{ $blog->author }}</p>
-                    <p class="text-gray-700 text-base mb-2">{{ $blog->text }}</p>
+                    <p class="text-gray-700 text-base mb-2 ">{!! $blog->text !!}</p>
                     <p class="text-gray-500 text-sm">{{ $blog->created_at }}</p>
                     <div class="mt-2">
                         <a href="{{ route('blogs.edit', $blog->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
