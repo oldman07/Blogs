@@ -14,13 +14,15 @@
                     <p class="text-gray-700 text-base mb-2 ">{!! $blog->text !!}</p>
                     <p class="text-gray-500 text-sm">{{ $blog->created_at }}</p>
                     <div class="mt-2">
-                        <a href="{{ route('blogs.edit', $blog->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="{{ route('blogs.edit', $blog->id) }}"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Edit
                         </a>
                         <form method="POST" action="{{ route('blogs.destroy', $blog->id) }}" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit"
+                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 Delete
                             </button>
                         </form>
