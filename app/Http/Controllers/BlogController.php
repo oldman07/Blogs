@@ -63,10 +63,8 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Blog $blog)
     {
-        $blog = Blog::findOrFail($id);
-
         return view('blogs.edit', compact('blog'));
     }
 
@@ -74,7 +72,7 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Blog $blog)
     {
         // Validation rules
         $rules = [
@@ -88,13 +86,12 @@ class BlogController extends Controller
 
         // Check if the validation fails
         if ($validator->fails()) {
-            return redirect()->route('blogs.edit', $id)
+            return redirect()->route('blogs.edit', $blog)
                 ->withErrors($validator)
                 ->withInput($request->only($rules));
         }
 
         // Update the blog post
-        $blog = Blog::findOrFail($id);
         $blog->title = $request->get('title');
         $blog->author = $request->get('author');
         $blog->text = $request->get('text');
@@ -105,12 +102,13 @@ class BlogController extends Controller
     }
 
 
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Blog $blog)
     {
-        $blog = Blog::find($id);
+
         $blog->delete();
         return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully!');
     }
