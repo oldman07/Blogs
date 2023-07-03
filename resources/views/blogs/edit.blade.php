@@ -18,10 +18,11 @@
                     value="{{ $blog->author }}">
             </div>
 
-            <<div class="mb-4">
+            <div class="mb-4">
                 <label for="text" class="block text-gray-700 font-bold mb-2">Text</label>
-                <textarea name="text" id="text" class="form-input rounded-md shadow-sm border-gray-300" required></textarea>
-    </div>
+                {{-- <textarea name="text" id="textarea" class="form-input rounded-md shadow-sm border-gray-300" required></textarea> --}}
+                <textarea name="text"  class="form-control tinymce-editor"></textarea>
+            </div>
 
     <div class="flex items-center justify-end">
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
