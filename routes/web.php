@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('login', [AuthController::class, 'authenticate']);
+Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistrationController::class, 'register'])->name('register');
 Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
